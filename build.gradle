@@ -1,0 +1,100 @@
+plugins {
+    id 'java'
+}
+
+group '1.0'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+//create a single Jar with all dependencies
+//task fatJar(type: Jar) {
+//    manifest {
+//        attributes 'Implementation-Title': 'Gradle Jar File Example',
+//                'Implementation-Version': version,
+//                'Main-Class': 'usc.edu.OwlEye.run.runOwlEye'
+//    }
+//    baseName = project.name + '-all'
+//    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+//    }
+//    with jar
+//}
+jar{
+    manifest {
+        attributes(
+                "Main-Class": "usc.edu.OwlEye.run.runOwlEye",
+
+        )
+
+    }
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it)
+        }
+    }
+    exclude 'META-INF/*.RSA', 'META-INF/*.SF','META-INF/*.DSA'
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    dependsOn ('dependencies')
+}
+repositories {
+    mavenCentral()
+    maven {
+        url "http://sourceforge.net/projects/jsi/files/m2_repo"
+    }
+}
+
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.13.2'
+    compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.13.2'
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.9.8'
+    implementation("com.google.guava:guava:29.0-jre")
+    compile 'org.apache.commons:commons-text:1.8'
+    implementation 'org.xmlunit:xmlunit-core:2.7.0'
+    // https://mvnrepository.com/artifact/tech.tablesaw/tablesaw-core
+    compile group: 'tech.tablesaw', name: 'tablesaw-core', version: '0.38.1'
+    compile group: 'org.xmlunit', name: 'xmlunit-core', version: '2.6.2'
+    compile group: 'com.google.guava', name: 'guava', version: 'r05'
+    compile group: 'commons-io', name: 'commons-io', version: '2.7'
+    // https://mvnrepository.com/artifact/org.apache.commons/commons-csv
+    compile group: 'org.apache.commons', name: 'commons-csv', version: '1.4'
+// https://mvnrepository.com/artifact/net.sourceforge.jsi/jsi
+    compile group: 'net.sourceforge.jsi', name: 'jsi', version: '1.0.0'
+    compile "org.slf4j:slf4j-simple:1.7.9"
+
+    implementation 'com.google.code.gson:gson:2.8.1'
+    implementation 'org.tinylog:tinylog-api:2.5.0'
+    implementation 'org.tinylog:tinylog-impl:2.5.0'
+    //Jemtal
+
+//    // https://mvnrepository.com/artifact/org.uma.jmetal/jmetal-core
+//    implementation group: 'org.uma.jmetal', name: 'jmetal-core', version: '6.0'
+//// https://mvnrepository.com/artifact/org.uma.jmetal/jmetal-problem
+//    implementation group: 'org.uma.jmetal', name: 'jmetal-problem', version: '6.0'
+//// https://mvnrepository.com/artifact/org.uma.jmetal/jmetal-algorithm
+//    implementation group: 'org.uma.jmetal', name: 'jmetal-algorithm', version: '6.0'
+//// https://mvnrepository.com/artifact/org.uma.jmetal/jmetal-exec
+//    implementation group: 'org.uma.jmetal', name: 'jmetal-exec', version: '6.0'
+//// https://mvnrepository.com/artifact/org.uma.jmetal/jmetal-gui
+//    implementation group: 'org.uma.jmetal', name: 'jmetal-gui', version: '6.0'
+//// https://mvnrepository.com/artifact/org.uma.jmetal/jmetal-operator
+//    implementation group: 'org.uma.jmetal', name: 'jmetal-operator', version: '6.0'
+//// https://mvnrepository.com/artifact/org.uma.jmetal/jmetal-solution
+//    implementation group: 'org.uma.jmetal', name: 'jmetal-solution', version: '6.0'
+//// https://mvnrepository.com/artifact/org.uma.jmetal/jmetal-util
+//    implementation group: 'org.uma.jmetal', name: 'jmetal-util', version: '6.0'
+
+
+
+
+}
+
+//jar {
+//    manifest {
+//        attributes 'Main-Class': 'class name'
+//    }
+//    from {
+//        configurations.compile.collect {
+//            it.isDirectory()? it: zipTree(it)
+//        }
+//    }
+//}
