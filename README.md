@@ -1,7 +1,10 @@
 # ScaleFix
-### TO rerun the experiments.
-1. clone the library
-2. Modify config.txt file with the correct path for "Android SDK"
-3. Install the required python packages specified in "Requirements.txt"
-4. Run "run_activity.py" with the following the activity_name you want to fix as an arguement.
-5. You will see the repaired apk containing the repaired activity in the outputResults folder
+### To rerun the experiments.
+1. Make the Android application debuggable
+2. Remove any older version installs from the device
+3. Install the debuggable app
+4. dump the ViewHeirarcy and take screenshot of the three different variation
+5. Dump the state using Android Satate Dumper
+6. Merge the VH and State
+7. runOwlEye.java is responsible for generating the UI fixes.
+   
