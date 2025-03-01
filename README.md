@@ -1,8 +1,5 @@
 # ScaleFix
 
-Copy the `config_data` file and change the required information. Currently, it has hardcoded paths. 
-Create the environment variable "CONFIG_PATH" and provide the path of the updated config path. 
-
 ### To rerun the experiments.
 Remove any older version installs from the device.
 
@@ -19,3 +16,6 @@ Remove any older version installs from the device.
 10. `runOwlEye.java` is responsible for generating the UI fixes.
    
 Python functions for steps 5, 6, 7, and 8 are provided in the `curated_methods.py` file. The name of the function is `statedumper_running_state`
+
+Note: Copy the `config_data` file and change the required information. Currently, it has hardcoded paths. 
+Create the environment variable "CONFIG_PATH" and provide the path of the updated config path. 
